@@ -1,5 +1,6 @@
 from django import forms
 from .models import Utilisateur
+from .models import Profil
 
 class InscriptionForm(forms.Form):
 
@@ -18,3 +19,16 @@ class InscriptionForm(forms.Form):
 class ConnexionForm(forms.Form):
 	pseudo = forms.CharField(max_length=25,required=True)
 	mdp = forms.CharField(max_length=50, widget=forms.PasswordInput,required=True)
+
+
+class ProfileForm(forms.ModelForm):
+
+    class Meta:
+
+        model = Profil
+
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__(*args, **kwargs)
+        self.fields['module1'].widget.attrs.update({'class' : 'validate'})

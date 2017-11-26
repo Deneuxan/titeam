@@ -1,4 +1,5 @@
 from django.db import models
+# from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -46,6 +47,7 @@ class Profil(models.Model):
 
 
 class Utilisateur(models.Model):
+	# user = models.OneToOneField(User)  # La liaison OneToOne vers le modèle User
 	pseudo = models.CharField(max_length=25, unique=True)
 	mail = models.EmailField(max_length=50, unique=True)
 	mdp = models.CharField(max_length=50)

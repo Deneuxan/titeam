@@ -5,7 +5,7 @@
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
-    <!--Import materialize.css-->
+
   </head>
   <body>
     <div id="container" style="min-width: 300px; height: 300px; margin: 1em">
@@ -13,12 +13,17 @@
 
       <form action="{% url "creationProfile" %}" method="post">
           {% csrf_token %}
-          {{ form.as_p }}
+          {{ form.as_table }}
           <input type="submit" value="Submit"/>
       </form>
     </div>
     <div>
       <script src="https://embed.github.com/view/3d/Deneuxan/titeam/userApp/Partie Basse.stl"></script>
+      <script>
+      function OnChangeHandler() {
+          
+      }
+    </script>
     </div>
   </body>
 </html>

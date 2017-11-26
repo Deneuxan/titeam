@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
 	url(r'^inscription$', views.inscription, name="inscription"),
-	url(r'^connexion$', views.connexion),
+	url(r'^connexion$', views.connexion, name="connexion"),
 ]

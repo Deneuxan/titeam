@@ -47,8 +47,8 @@ class Profil(models.Model):
 
 class Utilisateur(models.Model):
 	pseudo = models.CharField(max_length=25, unique=True)
-	mail = models.EmailField(max_length=255, unique=True)
-	mdp = models.CharField(max_length=255)
+	mail = models.EmailField(max_length=50, unique=True)
+	mdp = models.CharField(max_length=50)
 
 	profils = models.ManyToManyField(Profil, through='NomProfil')
 

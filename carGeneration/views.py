@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
 
-from .forms import InscriptionForm, ConnexionForm, ProfileForm
+from .forms import InscriptionForm, ConnexionForm, ProfileForm, SchedulForm
 from carGeneration.models import Utilisateur, Module, Siege, Coque
 
 import hashlib
@@ -66,7 +66,6 @@ def connexion(request):
 
 	form = ConnexionForm(request.POST or None)
 
-	string = ""
 	if form.is_valid():
 		pseudo = form.cleaned_data['pseudo']
 		mdp = form.cleaned_data['mdp']
@@ -105,4 +104,10 @@ def creationProfile(request):
 
 
 def createSchedul(request):
-	return HttpResponse("Cocuou")
+	form = SchedulForm(request.POST or None)
+
+	if form.is_valid() :
+		return HttpResponse("bien ouej")		
+
+
+	return render(request, 'carGeneration/createSchedul.html', locals())

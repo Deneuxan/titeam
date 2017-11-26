@@ -1,6 +1,5 @@
 from django import forms
-from .models import Utilisateur
-from .models import Profil
+from .models import Utilisateur, Profil, Reservation
 
 class InscriptionForm(forms.Form):
 
@@ -27,8 +26,14 @@ class ProfileForm(forms.ModelForm):
 
         model = Profil
 
-        fields = '__all__'
+        exclude = ('utilisateur',)
 
     def __init__(self, *args, **kwargs):
         super(ProfileForm, self).__init__(*args, **kwargs)
         self.fields['module1'].widget.attrs.update({'class' : 'validate'})
+
+
+class SchedulForm(forms.ModelForm):
+	class Meta:
+		model = Reservation
+		fields = ('date', 'duration', 'profil')

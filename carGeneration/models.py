@@ -27,8 +27,22 @@ class Coque(models.Model):
 
 	def __str__(self):
 		return self.nom
+
+
+class Utilisateur(models.Model):
+	# user = models.OneToOneField(User)  # La liaison OneToOne vers le modèle User
+	pseudo = models.CharField(max_length=25, unique=True)
+	mail = models.EmailField(max_length=50, unique=True)
+	mdp = models.CharField(max_length=50)
+
+	def __str__(self):
+		return self.pseudo
+
 		
 class Profil(models.Model):
+	nom = models.CharField(max_length=50)
+	utilisateur = models.ForeignKey(Utilisateur)
+
 	module1 = models.ForeignKey(Module, related_name='option1', null = True)
 	module2 = models.ForeignKey(Module, related_name='option2', null = True)
 	module3 = models.ForeignKey(Module, related_name='option3', null = True)
@@ -43,29 +57,7 @@ class Profil(models.Model):
 	coque = models.ForeignKey(Coque)
 
 	def __str__(self):
-		return self
-
-
-class Utilisateur(models.Model):
-	# user = models.OneToOneField(User)  # La liaison OneToOne vers le modèle User
-	pseudo = models.CharField(max_length=25, unique=True)
-	mail = models.EmailField(max_length=50, unique=True)
-	mdp = models.CharField(max_length=50)
-
-	profils = models.ManyToManyField(Profil, through='NomProfil')
-
-	def __str__(self):
-		return self.pseudo
-
-
-class NomProfil(models.Model):
-	nom = models.CharField(max_length=50, unique= True)
-
-	utilisateur = models.ForeignKey(Utilisateur)
-	profil = models.ForeignKey(Profil)
-
-	def __str__(self):
-		return "{0}.{1}".format(self.utilisateur, self.nom)
+		return self.nom
 
 
 class Reservation(models.Model):
@@ -73,6 +65,7 @@ class Reservation(models.Model):
 	duration =  models.IntegerField()
 	prix = models.FloatField()
 	utilisateur = models.ForeignKey(Utilisateur)
+	profil = models.ForeignKey(Profil)
 
 	def __str__(self):
 		return "{0}.{1}.{2}".format(self.date,self.duration,self.prix)

@@ -31,4 +31,12 @@ class ProfileForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ProfileForm, self).__init__(*args, **kwargs)
-        self.fields['module1'].widget.attrs.update({'class' : 'validate'})
+        self.fields['module1'].widget.attrs.update({'onchange' : 'OnChangeHandler'})
+        self.fields['module2'].widget.attrs.update({'onchange' : 'OnChangeHandler'})
+        self.fields['module3'].widget.attrs.update({'onchange' : 'OnChangeHandler'})
+        self.fields['module4'].widget.attrs.update({'onchange' : 'OnChangeHandler'})
+        self.fields['siege1'].widget.attrs.update({'onchange' : 'OnChangeHandler'})
+        self.fields['siege2'].widget.attrs.update({'onchange' : 'OnChangeHandler'})
+        self.fields['siege3'].widget.attrs.update({'onchange' : 'OnChangeHandler'})
+        self.fields['siege4'].widget.attrs.update({'onchange' : 'OnChangeHandler'})
+        self.fields['coque'].widget.attrs.update({'onchange' : 'OnChangeHandler'})

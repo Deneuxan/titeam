@@ -1,15 +1,16 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-  <head>
+
+{%block styles %}
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
+{% endblock %}
 
-  </head>
-  <body>
+{% block title %}Creer un profil{% endblock %}
+
+{% block content %}
     <div id="container" style="min-width: 300px; height: 300px; margin: 1em">
-      <!-- {% if envoi %}Votre compte a bien été créé !{% endif %} -->
 
       <form action="{% url "creationProfile" %}" method="post">
           {% csrf_token %}
@@ -25,5 +26,4 @@
       }
     </script>
     </div>
-  </body>
-</html>
+{% endblock %}

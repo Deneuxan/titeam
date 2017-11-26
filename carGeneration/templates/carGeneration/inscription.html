@@ -1,7 +1,12 @@
-{% if envoi %}Votre compte a bien été créé !{% endif %}
+{% extends "base.html" %}
 
+
+{% block title %}Inscription{% endblock %}
+
+{% block content %}
 <form action="{% url "inscription" %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Submit" />
 </form>
+{% endblock %}
